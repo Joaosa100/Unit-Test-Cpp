@@ -42,3 +42,5 @@ clean:
 	rm -rf $(BUILD_DIR) $(TARGET)
 
 .PHONY: all clean
+
+#tips: 1)make 2)./output 3)make clean

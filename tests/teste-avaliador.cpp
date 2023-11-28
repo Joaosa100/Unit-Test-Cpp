@@ -18,18 +18,21 @@ TEST_CASE("Deve recuperar maior lance de leilao em ordem crescente"){
 
     // verificando (assert)
     REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
-    
-    /*
-    parte nao mais necessaria para verificacao
-    float valorEsperado = 2000;
+}
+//infelizmente tivemos que duplicar codigo.
+TEST_CASE("Deve recuperar maior lance de leilao em ordem decrescente"){
+    // preparando ambiente (arrange)
+    Lance primeiroLance(Usuario("Fulano de tal"), 2000);
+    Lance segundoLance(Usuario("Beltrano"), 1000);
+    Leilao leilao("Fiat 147 0km");
+    leilao.recebeLance(primeiroLance);
+    leilao.recebeLance(segundoLance);
 
-    if (valorEsperado == leiloeiro.recuperaMaiorValor()){
-        std::cout << "TESTE OK" << std::endl;
-    } else{
-        std::cout << "TESTE FALHOU" << std::endl;
-    }
-    */
-    //std::cout << leiloeiro.recuperaMaiorValor() << std::endl;
+    Avaliador leiloeiro;
 
-    //return 0;
+    // executando codigo a ser testado (act)
+    leiloeiro.avalia(leilao);
+
+    // verificando (assert)
+    REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
 }

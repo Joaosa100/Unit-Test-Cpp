@@ -3,7 +3,7 @@
 #include "../src/Avaliador.hpp"
 #include <iostream>
 
-/*int main(){
+TEST_CASE("Deve recuperar maior lance de leilao em ordem crescente"){
     // preparando ambiente (arrange)
     Lance primeiroLance(Usuario("Fulano de tal"), 1000);
     Lance segundoLance(Usuario("Beltrano"), 2000);
@@ -17,6 +17,10 @@
     leiloeiro.avalia(leilao);
 
     // verificando (assert)
+    REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
+    
+    /*
+    parte nao mais necessaria para verificacao
     float valorEsperado = 2000;
 
     if (valorEsperado == leiloeiro.recuperaMaiorValor()){
@@ -24,8 +28,8 @@
     } else{
         std::cout << "TESTE FALHOU" << std::endl;
     }
-    
+    */
     //std::cout << leiloeiro.recuperaMaiorValor() << std::endl;
 
-    return 0;
-}*/
+    //return 0;
+}

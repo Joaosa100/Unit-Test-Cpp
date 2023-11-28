@@ -1,7 +1,9 @@
+#define CATCH_CONFIG_MAIN
+#include "catch2.hpp"
 #include "../src/Avaliador.hpp"
 #include <iostream>
 
-int main(){
+/*int main(){
     // preparando ambiente (arrange)
     Lance primeiroLance(Usuario("Fulano de tal"), 1000);
     Lance segundoLance(Usuario("Beltrano"), 2000);
@@ -26,4 +28,4 @@ int main(){
     //std::cout << leiloeiro.recuperaMaiorValor() << std::endl;
 
     return 0;
-}
+}*/

@@ -34,5 +34,5 @@ TEST_CASE("Deve recuperar maior lance de leilao em ordem decrescente"){
     leiloeiro.avalia(leilao);
 
     // verificando (assert)
-    REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
+    REQUIRE(2100 == leiloeiro.recuperaMaiorValor());
 }

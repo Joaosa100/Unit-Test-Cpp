@@ -3,14 +3,29 @@
 #include "../src/Avaliador.hpp"
 #include <iostream>
 
-TEST_CASE("Deve recuperar maior lance de leilao em ordem crescente"){
-    // preparando ambiente (arrange)
+Leilao emOrdemCrescente(){
     Lance primeiroLance(Usuario("Fulano de tal"), 1000);
     Lance segundoLance(Usuario("Beltrano"), 2000);
     Leilao leilao("Fiat 147 0km");
     leilao.recebeLance(primeiroLance);
     leilao.recebeLance(segundoLance);
 
+    return leilao;
+}
+
+Leilao emOrdemDecrescente(){
+    Lance primeiroLance(Usuario("Fulano de tal"), 2000);
+    Lance segundoLance(Usuario("Beltrano"), 1000);
+    Leilao leilao("Fiat 147 0km");
+    leilao.recebeLance(primeiroLance);
+    leilao.recebeLance(segundoLance);
+
+    return leilao;
+}
+
+TEST_CASE("Deve recuperar maior lance de leilao em ordem crescente"){
+    // preparando ambiente (arrange)
+    Leilao leilao = emOrdemCrescente();
     Avaliador leiloeiro;
 
     // executando codigo a ser testado (act)
@@ -23,12 +38,7 @@ TEST_CASE("Deve recuperar maior lance de leilao em ordem crescente"){
 //infelizmente tivemos que duplicar codigo.
 TEST_CASE("Deve recuperar maior lance de leilao em ordem decrescente"){
     // preparando ambiente (arrange)
-    Lance primeiroLance(Usuario("Fulano de tal"), 2000);
-    Lance segundoLance(Usuario("Beltrano"), 1000);
-    Leilao leilao("Fiat 147 0km");
-    leilao.recebeLance(primeiroLance);
-    leilao.recebeLance(segundoLance);
-
+    Leilao leilao = emOrdemDecrescente();
     Avaliador leiloeiro;
 
     // executando codigo a ser testado (act)
@@ -40,12 +50,7 @@ TEST_CASE("Deve recuperar maior lance de leilao em ordem decrescente"){
 
 TEST_CASE("Deve recuperar menor lance de leilao em ordem decrescente"){
     // preparando ambiente (arrange)
-    Lance primeiroLance(Usuario("Fulano de tal"), 2000);
-    Lance segundoLance(Usuario("Beltrano"), 1000);
-    Leilao leilao("Fiat 147 0km");
-    leilao.recebeLance(primeiroLance);
-    leilao.recebeLance(segundoLance);
-
+    Leilao leilao = emOrdemDecrescente();
     Avaliador leiloeiro;
 
     // executando codigo a ser testado (act)
@@ -57,12 +62,7 @@ TEST_CASE("Deve recuperar menor lance de leilao em ordem decrescente"){
 
 TEST_CASE("Deve recuperar menor lance de leilao em ordem crescente"){
     // preparando ambiente (arrange)
-    Lance primeiroLance(Usuario("Fulano de tal"), 1000);
-    Lance segundoLance(Usuario("Beltrano"), 2000);
-    Leilao leilao("Fiat 147 0km");
-    leilao.recebeLance(primeiroLance);
-    leilao.recebeLance(segundoLance);
-
+    Leilao leilao = emOrdemCrescente();
     Avaliador leiloeiro;
 
     // executando codigo a ser testado (act)

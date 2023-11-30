@@ -23,9 +23,9 @@ Leilao emOrdemDecrescente(){
     return leilao;
 }
 
-TEST_CASE("Deve recuperar maior lance de leilao em ordem crescente"){
+TEST_CASE("Deve recuperar maior lance de leilao"){
     // preparando ambiente (arrange)
-    Leilao leilao = emOrdemCrescente();
+    Leilao leilao = GENERATE(emOrdemCrescente(), emOrdemDecrescente());
     Avaliador leiloeiro;
 
     // executando codigo a ser testado (act)
@@ -35,34 +35,9 @@ TEST_CASE("Deve recuperar maior lance de leilao em ordem crescente"){
     REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
 }
 
-//infelizmente tivemos que duplicar codigo.
-TEST_CASE("Deve recuperar maior lance de leilao em ordem decrescente"){
+TEST_CASE("Deve recuperar menor lance de leilao"){
     // preparando ambiente (arrange)
-    Leilao leilao = emOrdemDecrescente();
-    Avaliador leiloeiro;
-
-    // executando codigo a ser testado (act)
-    leiloeiro.avalia(leilao);
-
-    // verificando (assert)
-    REQUIRE(2000 == leiloeiro.recuperaMaiorValor());
-}
-
-TEST_CASE("Deve recuperar menor lance de leilao em ordem decrescente"){
-    // preparando ambiente (arrange)
-    Leilao leilao = emOrdemDecrescente();
-    Avaliador leiloeiro;
-
-    // executando codigo a ser testado (act)
-    leiloeiro.avalia(leilao);
-
-    // verificando (assert)
-    REQUIRE(1000 == leiloeiro.recuperaMenorValor());
-}
-
-TEST_CASE("Deve recuperar menor lance de leilao em ordem crescente"){
-    // preparando ambiente (arrange)
-    Leilao leilao = emOrdemCrescente();
+    Leilao leilao = GENERATE(emOrdemCrescente(), emOrdemDecrescente());
     Avaliador leiloeiro;
 
     // executando codigo a ser testado (act)

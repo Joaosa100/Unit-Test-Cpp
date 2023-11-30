@@ -17,8 +17,11 @@ private:
     */
     float maiorValor = INT64_MIN;
     float menorValor = INT64_MAX;
+    std::vector<Lance> maiores3Lances;
+    static bool ordenaLances(const Lance&, const Lance&);
 public:
     void avalia(Leilao);
     float recuperaMaiorValor() const;
     float recuperaMenorValor() const;
+    std::vector<Lance> recupera3MaioresLances() const;
 };

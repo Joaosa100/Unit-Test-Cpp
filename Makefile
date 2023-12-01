@@ -9,6 +9,9 @@ CXXFLAGS := -std=c++17 -Wall -Wextra
 # Source directory
 SRC_DIR := src
 
+# Test directory
+TEST_DIR := tests
+
 # Build directory
 BUILD_DIR := build
 
@@ -16,11 +19,12 @@ BUILD_DIR := build
 TARGET := output
 
 # Source files
-SRCS := $(wildcard $(SRC_DIR)/*.cpp) \
-tests/teste-avaliador.cpp
+SRCS := $(wildcard $(SRC_DIR)/*.cpp)
+TEST_SRCS := $(wildcard $(TEST_DIR)/*.cpp)
 
 # Object files
 OBJS := $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRCS))
+TEST_OBJS := $(patsubst $(TEST_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(TEST_SRCS))
 
 # Default rule
 all: $(BUILD_DIR) $(TARGET)
@@ -30,11 +34,15 @@ $(BUILD_DIR):
 	@mkdir -p $(BUILD_DIR)
 
 # Rule to build the target executable
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJS) $(TEST_OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Rule to build object files
+# Rule to build object files for source files
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Rule to build object files for test files
+$(BUILD_DIR)/%.o: $(TEST_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Clean rule

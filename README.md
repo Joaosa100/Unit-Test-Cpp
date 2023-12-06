@@ -1,2 +1,2 @@
-# Cpp-Teste-Unidade
-Um simples repo para testes de unidade
+# Unit-Test-Cpp
+A repo for unit testing
